@@ -1,5 +1,61 @@
 * {
-        font-family: "Paytone One", sans-serif;
-        font-weight: 400;
-        font-style: normal;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+:root {
+        /* Primary Colors - Orange */
+        --primary-orange-100: #FFE0B7;
+        --primary-orange-200: #FFD361;
+        --primary-orange-300: #FFA800;
+        --primary-orange-400: #FF862E;
+
+        /* Primary Colors - Purple */
+        --primary-purple-100: #EFDBFF;
+        --primary-purple-200: #DEC7FF;
+        --primary-purple-300: #A672CF;
+        --primary-purple-400: #631B8F;
+
+        /* Secondary Colors - Yellow */
+        --secondary-yellow-100: #FFF5C2;
+        --secondary-yellow-200: #FFEE9B;
+        --secondary-yellow-300: #FFE259;
+        --secondary-yellow-400: #FFDA28;
+
+        /* Neutral Colors */
+        --neutral-white-100: #F5F5F5;
+        --neutral-gray-100: #B0B0B0;
+        --neutral-gray-200: #606060;
+        --neutral-black: #1E1E1E;
+
+        /* Success Colors - Green */
+        --success-green-100: #DFFCF0;
+        --success-green-200: #A0EACB;
+        --success-green-300: #4BCE97;
+        --success-green-400: #22A06B;
+
+        /* Error Colors - Red */
+        --error-red-100: #FFEDEB;
+        --error-red-200: #FFB6AD;
+        --error-red-300: #F87462;
+        --error-red-400: #E34935;
+
+        /* Warning Colors - Yellow */
+        --warning-100: #FFF7D6;
+        --warning-200: #FAEDB9;
+        --warning-300: #F5CD47;
+        --warning-400: #E2B203;
+}
+
+.dark-mode {
+        background-color: var(--primary-purple-100);
+}
+
+.font-comfortaa {
+        font-family: 'Comfortaa', sans-serif;
+}
+
+.font-paytone {
+        font-family: 'Paytone One', sans-serif;
 }
