@@ -48,9 +48,14 @@
         --warning-400: #E2B203;
 }
 
+.dark-mode {
+        background-color: var(--primary-purple-100);
+}
+
 .font-comfortaa {
         font-family: 'Comfortaa', sans-serif;
 }
+
 .font-paytone {
         font-family: 'Paytone One', sans-serif;
 }
