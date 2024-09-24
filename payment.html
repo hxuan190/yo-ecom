@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/img/Logo 1.png  " type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Phương thức thanh toán</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./config.js"></script>
+  </head>
+  <body>
+    <div
+      class="bg-[--primary-orange-100] flex flex-col justify-between xl:flex-row xl:justify-around py-[2rem] px-3"
+    >
+      <div class="">
+        <!-- BreakCrumbs -->
+        <div
+          class="flex justify-around items-center bg-purple-100 rounded-xl border-2 border-[#232323] text-lg p-2 xl:p-5 mb-5 shadow-br-black-sm"
+        >
+          <span>Giỏ hàng</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+          <span>Thông tin vận chuyển</span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+          <div
+            class="bg-green-100 rounded-xl border-2 border-[#232323] text-red-400 px-2 xl:py-3"
+          >
+            Thanh toán
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+          <span>Theo dõi đơn hàng</span>
+        </div>
+        <!-- order -->
+        <div class="mb-5">
+          <div
+            class="flex flex-row items-center justify-between pr-3 xl:pr-0 my-2"
+          >
+            <div class="relative">
+              <div
+                class="relative inline-flex h-[6rem] w-[6rem] xl:h-[12rem] xl:w-[12rem] shadow-br-black-md items-center justify-center rounded-[15px] border-2 border-[#232323] bg-[#FFD361] px-5 py-2.5"
+              >
+                <img src="./assets/img/soda-cam.png" alt="soda" />
+              </div>
+            </div>
+
+            <div class="ml-2">
+              <div class="xl:mb-3">
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                >
+                  Tên sản phẩm:
+                </span>
+                <span
+                  class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                  >Soda vị Cam lon thấp
+                </span>
+              </div>
+              <div class="xl:mb-3">
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                >
+                  Loại sản phẩm:
+                </span>
+                <span
+                  class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                  >Soda
+                </span>
+              </div>
+              <div class="flex justify-between items-center mb-3">
+                <div>
+                  <span
+                    class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                  >
+                    Số lượng:
+                  </span>
+                  <span
+                    class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                    >15
+                  </span>
+                </div>
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                  >20.000 VNĐ
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between pr-3 mt-4">
+            <!-- <div
+                class="w-[6rem] h-[6rem] relative bg-[var(--primary-orange-200)] rounded-[15px] border-2 border-[#232323]"
+              ></div> -->
+            <div class="relative">
+              <div
+                class="relative inline-flex h-[6rem] w-[6rem] xl:h-[12rem] xl:w-[12rem] shadow-br-black-md items-center justify-center rounded-[15px] border-2 border-[#232323] bg-[var(--primary-purple-200)] px-5 py-2.5"
+              >
+                <img src="./assets/img/keo-no-.png" alt="soda" />
+              </div>
+            </div>
+
+            <div class="ml-2">
+              <div class="xl:mb-3">
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                >
+                  Tên sản phẩm:
+                </span>
+                <span
+                  class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                  >Soda vị Cam lon thấp
+                </span>
+              </div>
+              <div class="xl:mb-3">
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                >
+                  Loại sản phẩm:
+                </span>
+                <span
+                  class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                  >Soda
+                </span>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="xl:mb-3">
+                  <span
+                    class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                  >
+                    Số lượng:
+                  </span>
+                  <span
+                    class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                    >15
+                  </span>
+                </div>
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                  >20.000 VNĐ
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between pr-3 mt-4">
+            <!-- <div
+                class="w-[6rem] h-[6rem] relative bg-[var(--primary-orange-200)] rounded-[15px] border-2 border-[#232323]"
+              ></div> -->
+            <div class="relative">
+              <div
+                class="relative inline-flex h-[6rem] w-[6rem] xl:h-[12rem] xl:w-[12rem] shadow-br-black-md items-center justify-center rounded-[15px] border-2 border-[#232323] bg-[#EBFFD4] px-5 py-2.5"
+              >
+                <img src="./assets/img/combo-.png" alt="soda" />
+              </div>
+            </div>
+
+            <div class="ml-2">
+              <div class="xl:mb-3">
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                >
+                  Tên sản phẩm:
+                </span>
+                <span
+                  class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                  >Soda vị Cam lon thấp
+                </span>
+              </div>
+              <div class="xl:mb-3">
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                >
+                  Loại sản phẩm:
+                </span>
+                <span
+                  class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                  >Soda
+                </span>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="xl:mb-3">
+                  <span
+                    class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                  >
+                    Số lượng:
+                  </span>
+                  <span
+                    class="text-center text-[#232323] text-[0.65rem] xl:text-lg font-extralight font-comfortaa leading-[25px]"
+                    >15
+                  </span>
+                </div>
+                <span
+                  class="text-[#232323] text-[0.65rem] xl:text-lg font-normal font-comfortaa leading-[25px]"
+                  >20.000 VNĐ
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-7 xl:mt-24">
+            <div
+              class="text-[#232323] text-xl font-light font-comfortaa leading-[25px]"
+            >
+              Phí vận chuyển: 5.000 VNĐ
+            </div>
+            <div
+              class="text-[#232323] text-xl font-light font-comfortaa leading-[25px]"
+            >
+              Tổng cộng:
+              <span
+                class="text-center text-[#232323] text-xl font-normal font-paytone xl:mt-3"
+                >155.000 VNĐ
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Shipping Information -->
+        <div class="xl:mx-1 md:w-[467px] md:mx-auto xl:py-0">
+          <div
+            class="flex md:mt-[70px] xl:justify-center flex-col items-center"
+          >
+            <!-- Container để tạo bóng chữ "Đăng nhập" -->
+            <div class="relative">
+              <!-- Bóng chữ (màu đen) -->
+              <span
+                class="absolute font-paytone left-[4px] top-[4px] text-5xl font-normal text-[#232323]"
+              >
+                Phương thức thanh toán
+              </span>
+              <!-- Chữ chính (màu cam) -->
+              <span
+                class="relative font-paytone text-5xl font-normal text-[#F87462]"
+              >
+                Phương thức thanh toán
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <div
+              class="flex items-center gap-5 xl:gap-7 w-full mt-[10px] px-4 xl:px-5 bg-orange-200 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+            >
+              <input
+                type="checkbox"
+                class="bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+              />
+              <div
+                class="py-5 font-comfortaa text-xl font-normal text-[#232323]"
+              >
+                Bằng tài khoản Ngân hàng
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-start relative">
+            <div
+              class="text-center text-[#232323] text-[23px] font-bold font-comfortaa flex-row flex items-center gap-3 xl:gap-5"
+            >
+              <div>Chọn ngân hàng</div>
+              <!-- button plus/minus -->
+              <div class="w-12 h-12 flex relative">
+                <button onclick="toggleBankList()" id="bankButton">
+                  <svg
+                    id="plusIcon"
+                    width="32"
+                    height="33"
+                    viewBox="0 0 32 33"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="15"
+                      cy="15.5"
+                      r="14.5"
+                      fill="#FFDA28"
+                      stroke="#232323"
+                    />
+                    <path
+                      d="M13.3125 20V16.5469H10V13.4531H13.3125V10H16.6875V13.4531H20V16.5469H16.6875V20H13.3125Z"
+                      fill="#232323"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  id="bankList"
+                  class="absolute top-12 left-[-11rem] font-normal bg-neutral-white p-3 z-10 border-[1px] border-neutral-black rounded-2xl leading-10 items-start hidden"
+                >
+                  <li><a href="#" class="hover:text-blue-500 block">ACB</a></li>
+                  <li>
+                    <a href="#" class="hover:text-blue-500 block"
+                      >Vietcombank</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-500 block">BIDV</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-500 block">HDBank</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-500 block">Sacombank</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 flex flex-col items-start">
+            <div
+              class="w-full h-[60px] mt-[10px] bg-neutral-100 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+            >
+              <input
+                type="text"
+                placeholder="Nhập tên in trên thẻ"
+                class="w-full h-full p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+              />
+            </div>
+          </div>
+          <div class="mt-5 flex flex-col items-start">
+            <div
+              class="w-full h-[60px] mt-[10px] bg-neutral-100 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+            >
+              <input
+                type="text"
+                placeholder="Nhập mã số thẻ"
+                class="w-full h-full p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="mt-5 flex items-start justify-between">
+            <div
+              class="w-[11rem] xl:w-[14rem] h-[60px] mt-[10px] bg-neutral-100 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+            >
+              <input
+                type="text"
+                placeholder="Ngày hết hạn"
+                class="h-full p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+              />
+            </div>
+            <div
+              class="w-[10rem] xl:w-[11rem] h-[60px] mt-[10px] bg-neutral-100 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+            >
+              <input
+                type="text"
+                placeholder="Ngày hết hạn"
+                class="h-full p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <div
+              class="flex items-center gap-5 xl:gap-7 w-full mt-[10px] px-4 xl:px-5 bg-orange-200 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+            >
+              <input
+                type="checkbox"
+                class="p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+              />
+              <div class=" py-5 font-comfortaa text-xl font-normal text-[#232323]">
+                Bằng tài khoản Ngân hàng
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <div
+              class="flex items-center gap-5 xl:gap-7 w-full mt-[10px] px-4 xl:px-5 bg-orange-200 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+            >
+              <input
+                type="checkbox"
+                class="p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+              />
+              <div class=" py-5 font-comfortaa text-xl font-normal text-[#232323]">
+                Bằng Ví điện tử Momo
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-12 mt-10">
+          <button class="absolute inset-0 bg-black rounded-2xl"></button>
+          <button
+            class="absolute inset-0 px-5 py-2.5 bg-[#ffda28] rounded-2xl border-2 border-border justify-center items-center inline-flex transition-transform duration-300 ease-in-out transform -translate-x-[4px] -translate-y-[4px] hover:translate-x-0 hover:translate-y-0"
+          >
+            <div
+              class="text-[#232323] text-xl font-paytone uppercase font-normal leading-normal whitespace-nowrap"
+            >
+              Thanh toán Khi nhận hàng
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
