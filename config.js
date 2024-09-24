@@ -145,9 +145,14 @@ function toggleDarkMode() {
                     DEFAULT: '#232323',
                 },
             },
-            borderradius: {
+            borderRadius: {
                 standard: '15px',
             },
+            boxShadow: {
+                'br-black-sm': ['inset -2px -2px 0 0 black'],
+                'br-black-md': ['inset -4px -4px 0 0 black'],
+                'br-black-lg': ['inset -8px -8px 0 0 black'],
+            }
         }
     }
 }
