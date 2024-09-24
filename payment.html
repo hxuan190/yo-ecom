@@ -292,7 +292,7 @@
             >
               <input
                 type="checkbox"
-                class="bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+                class="bg-transparent text-[#606060] w-5 h-5 text-base font-light font-comfortaa border-none outline-none"
               />
               <div
                 class="py-5 font-comfortaa text-xl font-normal text-[#232323]"
@@ -306,7 +306,7 @@
             <div
               class="text-center text-[#232323] text-[23px] font-bold font-comfortaa flex-row flex items-center gap-3 xl:gap-5"
             >
-              <div>Chọn ngân hàng</div>
+              Chọn ngân hàng
               <!-- button plus/minus -->
               <div class="w-12 h-12 flex relative">
                 <button onclick="toggleBankList()" id="bankButton">
@@ -355,9 +355,9 @@
             </div>
           </div>
 
-          <div class="mt-5 flex flex-col items-start">
+          <div class="flex flex-col items-start">
             <div
-              class="w-full h-[60px] mt-[10px] bg-neutral-100 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
+              class="w-full h-[60px] bg-neutral-100 rounded-[15px] shadow border-2 border-[#232323] shadow-br-black-md"
             >
               <input
                 type="text"
@@ -405,9 +405,11 @@
             >
               <input
                 type="checkbox"
-                class="p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+                class="p-5 bg-transparent w-5 h-5 text-[#606060] text-base font-light font-comfortaa border-none outline-none"
               />
-              <div class=" py-5 font-comfortaa text-xl font-normal text-[#232323]">
+              <div
+                class="py-5 font-comfortaa text-xl font-normal text-[#232323]"
+              >
                 Bằng tài khoản Ngân hàng
               </div>
             </div>
@@ -419,23 +421,25 @@
             >
               <input
                 type="checkbox"
-                class="p-5 bg-transparent text-[#606060] text-base font-light font-comfortaa border-none outline-none"
+                class="p-5 bg-transparent w-5 h-5 text-[#606060] text-base font-light font-comfortaa border-none outline-none"
               />
-              <div class=" py-5 font-comfortaa text-xl font-normal text-[#232323]">
+              <div
+                class="py-5 font-comfortaa text-xl font-normal text-[#232323]"
+              >
                 Bằng Ví điện tử Momo
               </div>
             </div>
           </div>
         </div>
-        <div class="relative h-12 mt-10">
-          <button class="absolute inset-0 bg-black rounded-2xl"></button>
+        <div class="relative mt-10 h-12">
+          <button class="absolute inset-0 rounded-2xl bg-black"></button>
           <button
-            class="absolute inset-0 px-5 py-2.5 bg-[#ffda28] rounded-2xl border-2 border-border justify-center items-center inline-flex transition-transform duration-300 ease-in-out transform -translate-x-[4px] -translate-y-[4px] hover:translate-x-0 hover:translate-y-0"
+            class="border-border absolute inset-0 inline-flex -translate-x-[4px] -translate-y-[4px] transform items-center justify-center rounded-2xl border-2 bg-[#ffda28] px-5 py-2.5 transition-transform duration-300 ease-in-out hover:translate-x-0 hover:translate-y-0"
           >
             <div
-              class="text-[#232323] text-xl font-paytone uppercase font-normal leading-normal whitespace-nowrap"
+              class="font-paytone whitespace-nowrap text-xl font-normal uppercase leading-normal text-[#232323]"
             >
-              Thanh toán Khi nhận hàng
+              Xác nhận thanh toán
             </div>
           </button>
         </div>
