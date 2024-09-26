@@ -119,25 +119,32 @@ function toggleBankList() {
             colors: {
                 // primary day
                 orange: {
-                    100: '#FFE0B7',
-                    200: '#FFD361',
-                    300: '#FFA800',
-                    400: '#FF862E',
-                },
+                  50: '#FFA800',
+                  80: '#FF862E',
+                  100: '#FFE0B7',
+                  200: '#FFD361',
+                  300: '#FFA800',
+                  400: '#FF862E',
+              },
                 //primary night
                 purple: {
-                    100: '#EFDBFF',
-                    200: '#DEC7FF',
-                    300: '#A672CF',
-                    400: '#631B8F',
-                },
+                  20: '#EFDBFF',
+                  30: '#DEC7FF',
+                  50: '#D2B2FF',
+                  100: '#EFDBFF',
+                  200: '#DEC7FF',
+                  300: '#A672CF',
+                  400: '#631B8F',
+              },
                 // secondary
                 yellow: {
-                    100: '#FFF5C2',
-                    200: '#FFEE9B',
-                    300: '#FFE259',
-                    400: '#FFDA28',
-                },
+                  30: '#FFF5C2',
+                  35 : '#FFD361',
+                  50: '#ffda28',
+                  100: '#FFEE9B',
+                  200: '#FFE259',
+                  300: '#FFDA28',
+              },
                 // neutral
                 neutral: {
                     white: '#F5F5F5',
@@ -147,13 +154,15 @@ function toggleBankList() {
                 },
                 //success
                 green: {
-                    50: '#EBFFD4',
-                    100: '#DFFCF0',
-                    200: '#A0EACB',
-                    300: '#4BCE97',
-                    400: '#22A06B',
-                    500: '#00583D',
-                },
+                  35: '#EBFFD4',
+                  50: '#EBFFD4',
+                  60: '#EBFFD4',
+                  100: '#DFFCF0',
+                  200: '#A0EACB',
+                  300: '#4BCE97',
+                  400: '#22A06B',
+                  500: '#00583D',
+              },
                 //error
                 red: {
                     100: '#FFEDEB',
@@ -179,7 +188,10 @@ function toggleBankList() {
                 'br-black-sm': ['inset -2px -2px 0 0 black'],
                 'br-black-md': ['inset -4px -4px 0 0 black'],
                 'br-black-lg': ['inset -8px -8px 0 0 black'],
-            }
+            },
+            padding : {
+              '8-custom' : '4px',
+          }
         }
     }
 }

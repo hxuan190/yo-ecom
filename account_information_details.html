@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./config.js" />
+    <script>
+        tailwind.config = {
+            content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+            theme: {
+                container: {
+                    center: true,
+                    padding: '20px',
+                },
+                screens: {
+                    sm: '390px',
+                    md: '744px',
+                    lg: '1133px',
+                    xl: '1920px',
+                },
+                extend: {
+                    fontFamily: {
+                        comfortaa: 'Comfortaa, sans-serif',
+                        paytone: 'Paytone One, system-ui',
+                    },
+                    fontWeight: {
+                        thin: 100,
+                        extralight: 200,
+                        light: 300,
+                        normal: 400,
+                        medium: 500,
+                        semibold: 600,
+                        bold: 700,
+                        extrabold: 800,
+                        black: 900,
+                    },
+                    colors: {
+                        // primary day
+                        orange: {
+                            100: '#FFE0B7',
+                            200: '#FFD361',
+                            300: '#FFA800',
+                            400: '#FF862E',
+                        },
+                        //primary night
+                        purple: {
+                            100: '#EFDBFF',
+                            200: '#DEC7FF',
+                            300: '#A672CF',
+                            400: '#631B8F',
+                        },
+                        // secondary
+                        yellow: {
+                            100: '#FFF5C2',
+                            200: '#FFEE9B',
+                            300: '#FFE259',
+                            400: '#FFDA28',
+                        },
+                        // neutral
+                        neutral: {
+                            white: '#F5F5F5',
+                            gray100: '#B0B0B0',
+                            gray200: '#606060',
+                            black: '#1E1E1E',
+                        },
+                        //success
+                        green: {
+                            50: '#EBFFD4',
+                            100: '#DFFCF0',
+                            200: '#A0EACB',
+                            300: '#4BCE97',
+                            400: '#22A06B',
+                            500: '#00583D',
+                        },
+                        //error
+                        red: {
+                            100: '#FFEDEB',
+                            200: '#FFB6AD',
+                            300: '#F87462',
+                            400: '#E34935',
+                        },
+                        //warning
+                        warning: {
+                            100: '#FFF7D6',
+                            200: '#FAEDB9',
+                            300: '#F5CD47',
+                            400: '#E2B203',
+                        },
+                        border: {
+                            DEFAULT: '#232323',
+                        },
+                    },
+                    keyframes: {
+                        'accordion-down': {
+                            from: { height: '0' },
+                            to: { height: 'var(--radix-accordion-content-height)' },
+                        },
+                        'accordion-up': {
+                            from: { height: 'var(--radix-accordion-content-height)' },
+                            to: { height: '0' },
+                        },
+                    },
+                    animation: {
+                        'accordion-down': 'accordion-down 0.2s ease-out',
+                        'accordion-up': 'accordion-up 0.2s ease-out',
+                    },
+                    textStrokeWidth: {
+                        1: '1px',
+                        2: '2px',
+                    },
+                    textShadow: {
+                        DEFAULT: '4px 4px 0 #232323',
+                    },
+                    boxShadow: {
+                        button: '4px 4px 0px #232323',
+                        card: '8px 8px 0px 0px #000',
+                    },
+                },
+            },
+            plugins: [
+                plugin(function ({ matchUtilities, theme }) {
+                    matchUtilities(
+                        {
+                            'stroke-neutral-black': () => ({
+                                '-webkit-text-stroke-width': theme('textStrokeWidth.1'),
+                                '-webkit-text-stroke-color': '#232323',
+                            }),
+                            'stroke-black-2': () => ({
+                                '-webkit-text-stroke-width': theme('textStrokeWidth.2'),
+                                '-webkit-text-stroke-color': '#232323',
+                            }),
+                            title: (value) => ({
+                                textShadow: value,
+                                color: '#FFA800',
+                            }),
+                            slogan: (value) => ({
+                                textShadow: value,
+                                color: '#FFD361',
+                            }),
+                            combo: (value) => ({
+                                textShadow: value,
+                                color: '#FF862E',
+                            }),
+                        },
+                        {
+                            values: {
+                                ...theme('textStrokeWidth'),
+                                ...theme('textShadow'),
+                            },
+                        },
+                    );
+                }),
+            ],
+        }
+    </script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("hidden");
+
+        }
+        // Select item function
+        function selectItem(element) {
+            // Find all rectangles and remove selected class
+            document.querySelectorAll('.rectangle').forEach(rect => {
+                rect.classList.remove('bg-yellow-50'); // Remove the selection background color
+                rect.classList.add('bg-white'); // Reset to default background color
+            });
+            // Add the selected class to the clicked element
+            element.classList.remove('bg-white');
+            element.classList.add('bg-yellow-50');
+            console.log(rect);
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="bg-gray-800 text-white p-5">
+        <div class="flex flex-row items-center justify-between">
+            <div class="flex flex-row items-center basis-1/4">
+                <button onclick="toggleMenu()"
+                    class="text-white bg-gray-900 px-4 py-2 rounded-md focus:outline-none focus:bg-gray-700 mr-4">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <div onclick="toggleMenu()" id="menu"
+                    class="bg-white text-black shadow-md rounded-lg flex flex-col items-center hidden absolute mt-12 top-[40px]">
+                    <a id="yoabout" href="#" class="px-4 py-2 hover:bg-gray-200 w-full text-center">Về Yo!</a>
+                    <a id="sodayo" href="#" class="px-4 py-2 hover:bg-gray-200 w-full text-center">Soda Yo!</a>
+                </div>
+            </div>
+            <div id="logo" class="basis-1/4 text-center">
+                Yo!
+            </div>
+            <div id="quick-search" class="basis-1/2 text-right">
+                Search placeholder
+            </div>
+        </div>
+    </header>
+    <div class="w-[414px]">
+        <div class="relative">
+            <!-- Shadow Rectangle -->
+            <div class="absolute w-[414px]  bg-black left-[4px] top-[3px] rounded-standard"
+                style="z-index: -1;"></div>
+
+            <!-- Main Rectangle -->
+            
+            <div id="rectangle" class="rectangle w-[414px]  bg-yellow-30 flex flex-col  text-black text-xl font-bold rounded-standard border-2 border-black font-paytone pl-4 pr-4" style="z-index: 1;">
+                <div class="flex-grow flex flex-col justify-center  ">
+                    <p class="mb-4">Thông tin khách hàng</p>
+            
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-bold">Họ và tên:</p>
+                        <p class="font-light">Nguyen Van Yo</p>
+                    </div>
+            
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Ngày sinh:</p>
+                        <p class="font-light">1/1/1</p>
+                    </div>
+            
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Địa chỉ:</p>
+                        <p class="font-light">124 Nguyen Dinh Chieu</p>
+                    </div>
+                </div>
+                
+                <div class="mt-auto">
+                    <p class="text-right underline">Chỉnh sửa</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
