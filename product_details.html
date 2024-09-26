@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./config.js"></script>
+    <script src="./mockdata.js"></script>
+    <script>
+        tailwind.config = {
+            content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+            theme: {
+                container: {
+                    center: true,
+                    padding: '20px',
+                },
+                screens: {
+                    sm: '390px',
+                    md: '744px',
+                    lg: '1133px',
+                    xl: '1920px',
+                },
+                extend: {
+                    fontFamily: {
+                        comfortaa: 'Comfortaa, sans-serif',
+                        paytone: 'Paytone One, system-ui',
+                    },
+                    fontWeight: {
+                        thin: 100,
+                        extralight: 200,
+                        light: 300,
+                        normal: 400,
+                        medium: 500,
+                        semibold: 600,
+                        bold: 700,
+                        extrabold: 800,
+                        black: 900,
+                    },
+                    colors: {
+                        // primary day
+                        orange: {
+                            100: '#FFE0B7',
+                            200: '#FFD361',
+                            300: '#FFA800',
+                            400: '#FF862E',
+                        },
+                        //primary night
+                        purple: {
+                            100: '#EFDBFF',
+                            200: '#DEC7FF',
+                            300: '#A672CF',
+                            400: '#631B8F',
+                        },
+                        // secondary
+                        yellow: {
+                            100: '#FFF5C2',
+                            200: '#FFEE9B',
+                            300: '#FFE259',
+                            400: '#FFDA28',
+                        },
+                        // neutral
+                        neutral: {
+                            white: '#F5F5F5',
+                            gray100: '#B0B0B0',
+                            gray200: '#606060',
+                            black: '#1E1E1E',
+                        },
+                        //success
+                        green: {
+                            50: '#EBFFD4',
+                            100: '#DFFCF0',
+                            200: '#A0EACB',
+                            300: '#4BCE97',
+                            400: '#22A06B',
+                            500: '#00583D',
+                        },
+                        //error
+                        red: {
+                            100: '#FFEDEB',
+                            200: '#FFB6AD',
+                            300: '#F87462',
+                            400: '#E34935',
+                        },
+                        //warning
+                        warning: {
+                            100: '#FFF7D6',
+                            200: '#FAEDB9',
+                            300: '#F5CD47',
+                            400: '#E2B203',
+                        },
+                        border: {
+                            DEFAULT: '#232323',
+                        },
+                    },
+                    keyframes: {
+                        'accordion-down': {
+                            from: { height: '0' },
+                            to: { height: 'var(--radix-accordion-content-height)' },
+                        },
+                        'accordion-up': {
+                            from: { height: 'var(--radix-accordion-content-height)' },
+                            to: { height: '0' },
+                        },
+                    },
+                    animation: {
+                        'accordion-down': 'accordion-down 0.2s ease-out',
+                        'accordion-up': 'accordion-up 0.2s ease-out',
+                    },
+                    textStrokeWidth: {
+                        1: '1px',
+                        2: '2px',
+                    },
+                    textShadow: {
+                        DEFAULT: '4px 4px 0 #232323',
+                    },
+                    boxShadow: {
+                        button: '4px 4px 0px #232323',
+                        card: '8px 8px 0px 0px #000',
+                    },
+                },
+            },
+            plugins: [
+                plugin(function ({ matchUtilities, theme }) {
+                    matchUtilities(
+                        {
+                            'stroke-neutral-black': () => ({
+                                '-webkit-text-stroke-width': theme('textStrokeWidth.1'),
+                                '-webkit-text-stroke-color': '#232323',
+                            }),
+                            'stroke-black-2': () => ({
+                                '-webkit-text-stroke-width': theme('textStrokeWidth.2'),
+                                '-webkit-text-stroke-color': '#232323',
+                            }),
+                            title: (value) => ({
+                                textShadow: value,
+                                color: '#FFA800',
+                            }),
+                            slogan: (value) => ({
+                                textShadow: value,
+                                color: '#FFD361',
+                            }),
+                            combo: (value) => ({
+                                textShadow: value,
+                                color: '#FF862E',
+                            }),
+                        },
+                        {
+                            values: {
+                                ...theme('textStrokeWidth'),
+                                ...theme('textShadow'),
+                            },
+                        },
+                    );
+                }),
+            ],
+        }
+    </script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("hidden");
+
+        }
+        // Select item function
+        function selectItem(element) {
+            // Find all rectangles and remove selected class
+            document.querySelectorAll('.rectangle').forEach(rect => {
+                rect.classList.remove('bg-yellow-50'); // Remove the selection background color
+                rect.classList.add('bg-white'); // Reset to default background color
+            });
+            // Add the selected class to the clicked element
+            element.classList.remove('bg-white');
+            element.classList.add('bg-yellow-50');
+            console.log(rect);
+        }
+
+        // togle info
+
+        function toggleInfo() {
+            var infoDiv = document.getElementById("info");
+            var toggleText = document.getElementById("toggleText");
+
+            if (toggleText.innerHTML === "Xem chi tiet") {
+                infoDiv.style.height = "300px";
+                toggleText.innerHTML = "Thu Gon";
+            } else {
+                infoDiv.style.height = "200px";
+                toggleText.innerHTML = "Xem chi tiet";
+            }
+        }
+
+        // mock data generated
+        document.addEventListener("DOMContentLoaded", () => {
+            const mockData = generateMockData(10);
+            const ratingList = document.getElementById("rating-section");
+
+            mockData.forEach(data => {
+                const rating = document.createElement("div");
+                rating.className = 'p-4 mb-2 border border-gray-200 rounded';
+                rating.innerHTML = `
+                    <p ${data.name}>
+                    <p ${data.date}>   
+                    <p ${data.comment}>
+                        
+                `;
+            })
+        })
+        document.addEventListener("DOMContentLoaded", () => {
+            const carousel = document.getElementById("carousel");
+            let startX;
+            let isDown = false;
+    
+            carousel.addEventListener('touchstart', (e) =>{
+                isDown = true;
+                startX = e.touches[0].pageX;
+                carousel.classList.remove('transition-transform');
+    
+                console.log("hello touch start")
+            }, {passive: true});
+    
+            carousel.addEventListener('touchmove', (e) =>{
+                if (!isDown) return;
+                const nextX =  e.touches[0].pageX;
+                const distance =  startX -  nextX;
+                console.log("distance ne: ", distance);
+                if (Math.abs(distance) > 20){
+                    // move slide
+                    moveSlide(distance > 0 ? 1 : -1);
+                    isDown = false;
+                }
+                console.log("hello touch move")
+            }, { passive: false });
+    
+            carousel.addEventListener('touchend', () =>{
+                isDown = false;
+                carousel.classList.add('transition-transform');
+            })
+    
+            function moveSlide (direction) {
+                const slideWidth = carousel.querySelector('div').clientWidth;
+                const currentScroll = carousel.scrollLeft;
+                const newScroll = currentScroll + (direction * slideWidth);
+                carousel.scrollTo({ left: newScroll, behavior: 'smooth' });
+            
+            }   
+        })
+        
+    </script>
+
+    <style>
+        .dropdown-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='gray'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5em 1.5em;
+        }
+
+        #carouselContainer {
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory; /* Enables snapping behavior */
+        }
+        
+        #carousel > div {
+            scroll-snap-align: start; /* Ensures each child snaps in place */
+            flex-shrink: 0; /* Prevents flex items from shrinking */
+        }
+
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="bg-gray-800 text-white p-5">
+        <div class="flex flex-row items-center justify-between">
+            <div class="flex flex-row items-center basis-1/4">
+                <button onclick="toggleMenu()"
+                    class="text-white bg-gray-900 px-4 py-2 rounded-md focus:outline-none focus:bg-gray-700 mr-4">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <div onclick="toggleMenu()" id="menu"
+                    class="bg-white text-black shadow-md rounded-lg flex flex-col items-center hidden absolute mt-12 top-[40px]">
+                    <a id="yoabout" href="#" class="px-4 py-2 hover:bg-gray-200 w-full text-center">Về Yo!</a>
+                    <a id="sodayo" href="#" class="px-4 py-2 hover:bg-gray-200 w-full text-center">Soda Yo!</a>
+                </div>
+            </div>
+            <div id="logo" class="basis-1/4 text-center">
+                Yo!
+            </div>
+            <div id="quick-search" class="basis-1/2 text-right">
+                Search placeholder
+            </div>
+        </div>
+    </header>
+    <div class="w-[414px] mt-2 flex flex-col">
+        <div>
+            <div id="avatar" class="relative mb-5">
+                <!-- Shadow Rectangle -->
+                <div class="absolute w-[414px] h-[308px] bg-black left-[3px] top-[4.5px] rounded-standard"
+                    style="z-index: -1;"></div>
+
+                <!-- Main Rectangle -->
+                <div id="rectangle"
+                    class=" rectangle w-[414px]  bg-yellow-35 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa"
+                    style="z-index: 1;">
+                    <img src="assets/cam.png" alt="Tai khoan va bao mat" style="height: 100%; width: auto;">
+                </div>
+            </div>
+            <div class="flex flex-row justify-evenly">
+                <div id="categoryr" class="relative ">
+                    <!-- Shadow Rectangle -->
+                    <div class="absolute w-[100px] h-[100px] bg-black left-[3px] top-[4.5px] rounded-standard"
+                        style="z-index: -1;"></div>
+
+                    <!-- Main Rectangle -->
+                    <div id="rectangle"
+                        class=" rectangle w-[100px] h-[100px]  bg-yellow-35 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa"
+                        style="z-index: 1;">
+                        <p>It Duong</p>
+                    </div>
+                </div>
+
+                <div id="categoryr" class="relative ">
+                    <!-- Shadow Rectangle -->
+                    <div class="absolute w-[100px] h-[100px] bg-black left-[3px] top-[4.5px] rounded-standard"
+                        style="z-index: -1;"></div>
+
+                    <!-- Main Rectangle -->
+                    <div id="rectangle"
+                        class=" rectangle w-[100px] h-[100px]  bg-orange-50 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa"
+                        style="z-index: 1;">
+                        <p>Tu nhien</p>
+                    </div>
+                </div>
+
+                <div id="categoryr" class="relative ">
+                    <!-- Shadow Rectangle -->
+                    <div class="absolute w-[100px] h-[100px] bg-black left-[3px] top-[4.5px] rounded-standard"
+                        style="z-index: -1;"></div>
+
+                    <!-- Main Rectangle -->
+                    <div id="rectangle"
+                        class="rectangle w-[100px] h-[100px]  bg-orange-80 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa"
+                        style="z-index: 1;">
+                        <p class="pl-4 pr-4">Nang Dong</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="order-section" class="ml-8 mt-5">
+            <div class="font-paytone mb-3">
+                <p class="text-4xl">Yo! Soda Vị Cam Lon Thấp.</p>
+            </div>
+
+            <div id="star_price" class="flex flex-row">
+                <div id="stars" class="flex relative w-[100px]  h-[30px] mr-2 mb-3">
+                    <img src="assets/Star 17.svg" class="absolute z-40" alt="Tai khoan va bao mat"
+                        style="height: 100%; width: auto;">
+                    <img src="assets/Star 18.svg" class="absolute ml-[17px] z-30" alt="Tai khoan va bao mat"
+                        style="height: 100%; width: auto;">
+                    <img src="assets/Star 19.svg" class="absolute ml-[34px] z-20" alt="Tai khoan va bao mat"
+                        style="height: 100%; width: auto;">
+                    <img src="assets/Star 20.svg" class="absolute ml-[51px] z-10" alt="Tai khoan va bao mat"
+                        style="height: 100%; width: auto;">
+                    <img src="assets/Star 21.svg" class="absolute ml-[68px] z-0" alt="Tai khoan va bao mat"
+                        style="height: 100%; width: auto;">
+                </div>
+
+                <div id="price" class="font-paytone">
+                    <p>15,000 đ</p>
+                </div>
+
+            </div>
+
+            <div class="font-comfortaa">
+                <p class="mb-2">Chon vi ma ban muon:</p>
+                <div class="flex flex-row">
+                    <button
+                        class="h-10 w-10 rounded-full bg-orange-50 text-white flex items-center justify-center shadow-lg focus:outline-none mr-4">
+
+                    </button>
+                    <button
+                        class="h-10 w-10 rounded-full bg-purple-50 text-white flex items-center justify-center shadow-lg focus:outline-none mr-4"></button>
+
+                    </button>
+                    <button
+                        class="h-10 w-10 rounded-full bg-green-35 text-white flex items-center justify-center shadow-lg focus:outline-none mr-4"></button>
+
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-col justify-between mt-3">
+                <div class="flex flex-row">
+                    <div class="mb-4">
+                        <label for="product-type" class="block text-gray-700 text-sm font-bold mb-2">Chon san
+                            pham:</label>
+                        <select id="product-type"
+                            class="block appearance-none w-full bg-gray-200 border-2 border-black text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 rounded-standard dropdown-icon ">
+                            <option>Product 1</option>
+                            <option>Product 2</option>
+                            <option>Product 3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-row">
+                    <div class="mb-4">
+                        <label for="quantity" class="block text-gray-700 text-sm font-bold mb-2">So Luong</label>
+                        <select id="quantity"
+                            class="block appearance-none w-full bg-gray-200 border-2 border-black text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 rounded-standard dropdown-icon">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="general-information">
+                <div id="info" style="height: 200px; overflow: hidden; transition: height 0.3s ease;">
+                    <span class="font-bold font-comfortaa">Thong tin chung:</span>
+                    <span class="font-light font-comfortaa">Nước soda Yo! vị cam là sự pha trộn giàu vitamin C của các
+                        thành phần tự nhiên như nước ép quýt và quả quýt hòa quyện với một chút nước chanh để tạo ra một
+                        hương vị cam tươi mới đầy hứng khởi trên nền của loại nước có ga.</span>
+                    <p>
+                        <span class="font-bold font-comfortaa">Thành phần:</span>
+                        <span class="font-light font-comfortaa"> Nước có ga, Nước chanh, Nước ép cam, Nước ép quýt, Siro
+                            củ sắn, Quả anh đào, Muối hồng Himalaya.</span>
+                    </p>
+                    <p class="font-light font-comfortaa">
+                        <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                        <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                        <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                        <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                    </p>
+                </div>
+
+                <p id="toggleText" class="font-bold font-comfortaa underline cursor-pointer" onclick="toggleInfo()">Xem
+                    chi tiet</p>
+            </div>
+
+            <div class="relative mt-5">
+                <!-- Shadow Rectangle -->
+                <div class="absolute w-[250px] h-[38px] bg-black left-[3px] top-[3px] rounded-standard"
+                    style="z-index: -1;"></div>
+
+                <!-- Main Rectangle -->
+                <div id="rectangle" onclick="selectItem(this)"
+                    class=" rectangle w-[250px] h-[38px] bg-yellow-50 text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa pl-4 pt-1"
+                    style="z-index: 1;">
+                    Them vao gio hang
+                </div>
+            </div>
+
+
+        </div>
+        <div id="rating-section" class="rating">
+            <div class="flex flex-col justify-between">
+                <p class="mt-5 ml-7 font-paytone font-bold text-3xl">Danh gia tu khach hang</p>
+                <div class="relative mt-5">
+                    <!-- Shadow Rectangle -->
+                    <div class="absolute w-[100px] h-[28px] bg-black left-[3px] top-[3px] rounded-standard"
+                        style="z-index: -1;"></div>
+
+                    <!-- Main Rectangle -->
+                    <div id="rectangle" onclick="selectItem(this)"
+                        class=" rectangle w-[100px] h-[28px] bg-yellow-50 text-black font-bold rounded-standard border-2 border-black font-paytone pl-3 text-[14px]"
+                        style="z-index: 1;">
+                        Binh Luan
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-center items-center mb-5">
+                <p class="font-paytone font-bold text-xl">Co the ban cung thich</p>
+            </div>
+            <div class="relative overflow-scroll">
+                <div class="flex transition-transform duration-300 ease-in-out" id="carousel">
+                    <!-- Slide 1 -->
+                    <div class="flex-none w-full max-w-2xl mr-2 ml-5">
+                        <div class="relative mb-5">
+                            <!-- Shadow Rectangle -->
+                            <div class="absolute w-[380px] h-[500px] bg-black left-[3.5px] top-[4.5px] rounded-standard"
+                                style="z-index: -5;"></div>
+
+                            <!-- Main Rectangle -->
+                            <div class="rectangle w-[380px] h-[500px] bg-purple-30 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black z-[2]"
+                                >
+                                <img src="assets/cam.png" alt="Tai khoan va bao mat"
+                                    class="h-auto w-auto max-w-full max-h-full mx-auto my-4"
+                                    style="aspect-ratio: 1 / 1;"/>
+
+                                    <div class=" relative flex justify-between items-center px-4 w-full h-12">
+                                        <div class="relative w-[170px] h-[40px]">
+                                            <!-- Shadow Rectangle for detail button -->
+                                            <div class="absolute w-[150px] h-[40px] bg-black left-1 top-1 rounded-lg" style="z-index: 2;"></div>
+                                    
+                                            <!-- Main Rectangle for detail button -->
+                                            <div class=" absolute rectangle w-[150px] h-[40px] bg-yellow-50 text-black font-bold rounded-lg border-2 border-black text-sm pl-3 pt-1 leading-loose" style="z-index: 3;">
+                                                Chi Tiet San Pham
+                                            </div>
+                                        </div>
+                                    
+                                        <!-- Adjusted parent div for right-end alignment using flex and space-between -->
+                                        <div class="relative h-12 w-12 ">
+                                            <!-- Shadow Button: placed behind with a lower z-index -->
+                                            <div class="absolute bg-black rounded-full h-12 w-12 left-1 top-1 z-[1]"></div>
+                                    
+                                            <!-- Main Button: Visible and interactive -->
+                                            <button class="relative bg-yellow-50 text-black font-bold rounded-full h-12 w-12 flex items-center justify-center shadow-lg focus:outline-none z-[2]">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full h-5 flex flex-col justify-center items-center pt-7">
+                            <p class="font-paytone font-bold text-xl">Yo! Soda Vị Nho </p>
+                            <p class="font-paytone font-bold text-xl">Lon Thap</p>
+                            <p class="font-paytone font-bold text-xl">15,000 VND</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="flex-none w-full max-w-2xl mr-2 ml-5">
+                        <div class="relative mb-5">
+                            <!-- Shadow Rectangle -->
+                            <div class="absolute w-[380px] h-[500px] bg-black left-[3.5px] top-[4.5px] rounded-standard"
+                                style="z-index: -5;"></div>
+
+                            <!-- Main Rectangle -->
+                            <div class="rectangle w-[380px] h-[500px] bg-purple-20 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black z-[2]"
+                                >
+                                <img src="assets/cam.png" alt="Tai khoan va bao mat"
+                                    class="h-auto w-auto max-w-full max-h-full mx-auto my-4"
+                                    style="aspect-ratio: 1 / 1;"/>
+
+                                    <div class=" relative flex justify-between items-center px-4 w-full h-12">
+                                        <div class="relative w-[170px] h-[40px]">
+                                            <!-- Shadow Rectangle for detail button -->
+                                            <div class="absolute w-[150px] h-[40px] bg-black left-1 top-1 rounded-lg" style="z-index: 2;"></div>
+                                    
+                                            <!-- Main Rectangle for detail button -->
+                                            <div class=" absolute rectangle w-[150px] h-[40px] bg-yellow-50 text-black font-bold rounded-lg border-2 border-black text-sm pl-3 pt-1 leading-loose" style="z-index: 3;">
+                                                Chi Tiet San Pham
+                                            </div>
+                                        </div>
+                                    
+                                        <!-- Adjusted parent div for right-end alignment using flex and space-between -->
+                                        <div class="relative h-12 w-12 ">
+                                            <!-- Shadow Button: placed behind with a lower z-index -->
+                                            <div class="absolute bg-black rounded-full h-12 w-12 left-1 top-1 z-[1]"></div>
+                                    
+                                            <!-- Main Button: Visible and interactive -->
+                                            <button class="relative bg-yellow-50 text-black font-bold rounded-full h-12 w-12 flex items-center justify-center shadow-lg focus:outline-none z-[2]">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full h-5 flex flex-col justify-center items-center pt-7">
+                            <p class="font-paytone font-bold text-xl">Yo! Soda Vị Nho </p>
+                            <p class="font-paytone font-bold text-xl">Lon Thap</p>
+                            <p class="font-paytone font-bold text-xl">15,000 VND</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                   <div class="flex-none w-full max-w-2xl mr-2 ml-5">
+                    <div class="relative mb-5">
+                        <!-- Shadow Rectangle -->
+                        <div class="absolute w-[380px] h-[500px] bg-black left-[3.5px] top-[4.5px] rounded-standard"
+                            style="z-index: -5;"></div>
+
+                        <!-- Main Rectangle -->
+                        <div class="rectangle w-[380px] h-[500px] bg-green-60 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black z-[2]"
+                            >
+                            <img src="assets/cam.png" alt="Tai khoan va bao mat"
+                                class="h-auto w-auto max-w-full max-h-full mx-auto my-4"
+                                style="aspect-ratio: 1 / 1;"/>
+
+                                <div class=" relative flex justify-between items-center px-4 w-full h-12">
+                                    <div class="relative w-[170px] h-[40px]">
+                                        <!-- Shadow Rectangle for detail button -->
+                                        <div class="absolute w-[150px] h-[40px] bg-black left-1 top-1 rounded-lg" style="z-index: 2;"></div>
+                                
+                                        <!-- Main Rectangle for detail button -->
+                                        <div class=" absolute rectangle w-[150px] h-[40px] bg-yellow-50 text-black font-bold rounded-lg border-2 border-black text-sm pl-3 pt-1 leading-loose" style="z-index: 3;">
+                                            Chi Tiet San Pham
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Adjusted parent div for right-end alignment using flex and space-between -->
+                                    <div class="relative h-12 w-12 ">
+                                        <!-- Shadow Button: placed behind with a lower z-index -->
+                                        <div class="absolute bg-black rounded-full h-12 w-12 left-1 top-1 z-[1]"></div>
+                                
+                                        <!-- Main Button: Visible and interactive -->
+                                        <button class="relative bg-yellow-50 text-black font-bold rounded-full h-12 w-12 flex items-center justify-center shadow-lg focus:outline-none z-[2]">
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-5 flex flex-col justify-center items-center pt-7">
+                        <p class="font-paytone font-bold text-xl">Yo! Soda Vị Nho </p>
+                        <p class="font-paytone font-bold text-xl">Lon Thap</p>
+                        <p class="font-paytone font-bold text-xl">15,000 VND</p>
+                    </div>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>
