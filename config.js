@@ -119,6 +119,8 @@ function toggleBankList() {
             colors: {
                 // primary day
                 orange: {
+                  20: '#FFE0B7',
+                  30: '#FFE259',
                   50: '#FFA800',
                   80: '#FF862E',
                   100: '#FFE0B7',
