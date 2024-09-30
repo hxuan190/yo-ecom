@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./config.js" />
+    <script src="./config.js"></script>
     <script>
         tailwind.config = {
             content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -156,13 +156,54 @@
         }
     </script>
     <script>
-        function toggleMenu() {
-            document.getElementById("menu").classList.toggle("hidden");
 
-        }
-        // Select item function
+        document.addEventListener('DOMContentLoaded', function () {
+            var accountSecurity = document.getElementById('account_security');
+            var orderTracking = document.getElementById('order_tracking');
+            var cusInfo = document.getElementById('btn_cus_info');
+
+            cusInfo.classList.remove('bg-white');
+            cusInfo.classList.add('bg-yellow-50');
+            // Initially hide these sections
+            if (accountSecurity) accountSecurity.classList.add('hidden');
+            if (orderTracking) orderTracking.classList.add('hidden');
+
+
+            // Optionally show customer info by default
+            var cusInfo = document.getElementById('cus_info');
+            if (cusInfo) cusInfo.classList.remove('hidden');
+        });
+
         function selectItem(element) {
-            // Find all rectangles and remove selected class
+            // Define all elements by their IDs
+            var cusInfo = document.getElementById('cus_info');
+            var accountSecurity = document.getElementById('account_security');
+            var orderTracking = document.getElementById('order_tracking');
+
+            // Check which button was clicked and toggle visibility accordingly
+            if (element.id === 'btn_account_security') {
+                if (accountSecurity) {
+                    accountSecurity.classList.remove('hidden'); // Show Account Security
+                    console.log('accountSecurity', accountSecurity);
+                }
+                cusInfo.classList.add('hidden'); // Hide Customer Info
+                orderTracking.classList.add('hidden'); // Hide Order Tracking
+            } else if (element.id === 'btn_order_tracking') {
+                if (orderTracking) {
+                    orderTracking.classList.remove('hidden'); // Show Order Tracking
+                    console.log('orderTracking', orderTracking);
+                }
+                cusInfo.classList.add('hidden'); // Hide Customer Info
+                accountSecurity.classList.add('hidden'); // Hide Account Security
+            } else if (element.id === 'btn_cus_info') {
+                if (cusInfo) {
+                    cusInfo.classList.remove('hidden'); // Show Customer Info
+                    console.log('cusInfo', cusInfo);
+                }
+                accountSecurity.classList.add('hidden'); // Hide Account Security
+                orderTracking.classList.add('hidden'); // Hide Order Tracking
+            }
+
             document.querySelectorAll('.rectangle').forEach(rect => {
                 rect.classList.remove('bg-yellow-50'); // Remove the selection background color
                 rect.classList.add('bg-white'); // Reset to default background color
@@ -170,13 +211,17 @@
             // Add the selected class to the clicked element
             element.classList.remove('bg-white');
             element.classList.add('bg-yellow-50');
-
-            const url = element.getAttribute('data-url');
-            if (url) {
-                window.location.href = url;
-            }
-            console.log(url);
         }
+
+        
+
+    </script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("hidden");
+
+        }
+
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,75 +232,197 @@
 </head>
 
 <body>
-    <header class="bg-gray-800 text-white p-5">
-        <div class="flex flex-row items-center justify-between">
-            <div class="flex flex-row items-center basis-1/4">
-                <button onclick="toggleMenu()"
-                    class="text-white bg-gray-900 px-4 py-2 rounded-md focus:outline-none focus:bg-gray-700 mr-4">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-                <div onclick="toggleMenu()" id="menu"
-                    class="bg-white text-black shadow-md rounded-lg flex flex-col items-center hidden absolute mt-12 top-[40px]">
-                    <a id="yoabout" href="#" class="px-4 py-2 hover:bg-gray-200 w-full text-center">Về Yo!</a>
-                    <a id="sodayo" href="#" class="px-4 py-2 hover:bg-gray-200 w-full text-center">Soda Yo!</a>
-                </div>
-            </div>
-            <div id="logo" class="basis-1/4 text-center">
-                Yo!
-            </div>
-            <div id="quick-search" class="basis-1/2 text-right">
-                Search placeholder
-            </div>
+    <!-- Header -->
+    <header class="container py-4 flex justify-between items-center">
+        <button>
+            <img loading="lazy" src="../assets/vector.svg" alt="vector menu" />
+        </button>
+
+        <div className="">
+            <img className="object-cover" src="../assets/images/logo.png" alt="logo" loading="lazy" width="120"
+                height="65" />
         </div>
+
+        <button aria-label="Shopping bag" class="text-black">
+            <img loading="lazy" src="../assets/shopping-bag.svg" alt="shopping-bag" />
+        </button>
     </header>
-    <div class="w-[414px]">
-        <div class=" pb-3 pt-3">
-            <div class="relative">
-                <!-- Shadow Rectangle -->
-                <div class="absolute w-[414px] h-[38px] bg-black left-[4px] top-[3px] rounded-standard"
-                    style="z-index: -1;"></div>
+    <div class="bg-orange-20">
+        <div class="flex xl:flex-row flex-col xl:max-w-[1300px] pt-[3.7275rem] justify-center xl:container">
+            <!-- Container for laptop screens: xl:flex-col and other settings for 'xl' -->
+            <div class="xl:w-full xl:flex xl:flex-col xl:mr-[2.25rem] xl:max-w-[300px] hidden">
+                <div class="pb-3 pt-3">
+                    <div id="btn_cus_info" onclick="selectItem(this)"
+                        class="rectangle bg-white p-2 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm xl:max-w-[192px]">
+                        Thong tin khach hang
+                    </div>
+                </div>
 
-                <!-- Main Rectangle -->
-                <div onclick="selectItem(this)" data-url="account_information_details.html"
-                    class="rectangle w-[414px] h-[38px] bg-white flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa"
-                    style="z-index: 1;">
-                    Thong tin khach hang
+                <div class="pb-3">
+                    <div id="btn_account_security" onclick="selectItem(this)"
+                        class="rectangle bg-white p-2 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm xl:max-w-[192px]">
+                        Tai khoan va bao mat
+                    </div>
+                </div>
+
+                <div class="pb-3">
+                    <div id="btn_order_tracking" onclick="selectItem(this)"
+                        class="rectangle bg-white p-2 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm xl:max-w-[192px]">
+                        Trang theo doi don hang
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container for phone screens: Always visible unless 'xl' -->
+            <div
+                class="flex justify-around items-center bg-white rounded-xl border-2 border-[#232323] text-lg p-2 xl:p-5 mb-5 shadow-br-black-sm max-w-[79rem] ml-2 mr-2 xl:hidden">
+                <span id="btn_cus_info" onclick="selectItem(this)" class="rectangle rounded-xl p-1" >Thông tin khach hang</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <span id="btn_account_security" onclick="selectItem(this)" class="rectangle rounded-xl p-1">Tai Khoan va Bao Mat</span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                    <span id="btn_order_tracking" onclick="selectItem(this)" class="rectangle rounded-xl p-1">Trang Theo dõi đơn hàng</span>
+            </div>
+
+            <div id="cus_info"
+                class="rectangle bg-yellow-30 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black font-paytone pl-4 pr-4 ml-2 mr-2 xl:min-w-[45rem] xl:min-h-[30rem]">
+                <div class="flex-grow flex flex-col justify-center  ">
+                    <p class="mb-4">Thông tin khách hàng</p>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-bold">Họ và tên:</p>
+                        <p class="font-light">Nguyen Van Yo</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Ngày sinh:</p>
+                        <p class="font-light">1/1/1</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Địa chỉ:</p>
+                        <p class="font-light">124 Nguyen Dinh Chieu</p>
+                    </div>
+                </div>
+
+                <div class="mt-auto">
+                    <p class="text-right underline">Chỉnh sửa</p>
+                </div>
+            </div>
+
+            <div id="account_security"
+                class="rectangle  bg-yellow-30 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black font-paytone pl-4 pr-4 xl:min-w-[45rem] xl:min-h-[30rem]">
+                <div class="flex-grow flex flex-col justify-center  ">
+                    <p class="mb-4">Tai khoan va bao mat</p>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-bold">Họ và tên:</p>
+                        <p class="font-light">Nguyen Van Yo</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Ngày sinh:</p>
+                        <p class="font-light">1/1/1</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Địa chỉ:</p>
+                        <p class="font-light">124 Nguyen Dinh Chieu</p>
+                    </div>
+                </div>
+
+                <div class="mt-auto">
+                    <p class="text-right underline">Chỉnh sửa</p>
+                </div>
+            </div>
+
+            <div id="order_tracking"
+                class="rectangle bg-yellow-30 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black font-paytone pl-4 pr-4 xl:min-w-[45rem] xl:min-h-[30rem]">
+                <div class="flex-grow flex flex-col justify-center  ">
+                    <p class="mb-4">Thông tin don hang</p>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-bold">Họ và tên:</p>
+                        <p class="font-light">Nguyen Van Yo</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Ngày sinh:</p>
+                        <p class="font-light">1/1/1</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-4 font-comfortaa">
+                        <p class="font-semibold">Địa chỉ:</p>
+                        <p class="font-light">124 Nguyen Dinh Chieu</p>
+                    </div>
+                </div>
+
+                <div class="mt-auto">
+                    <p class="text-right underline">Chỉnh sửa</p>
                 </div>
             </div>
         </div>
 
-        <div class="pb-3">
-            <div class="relative">
-                <!-- Shadow Rectangle -->
-                <div class="absolute w-[414px] h-[38px] bg-black left-[4px] top-[3px] rounded-standard"
-                    style="z-index: -1;"></div>
+        <!-- footer responsive -->
+        <!-- footer -->
+        <footer class="bg-orange-300 mt-[12.8rem]">
+            <div
+                class="flex flex-col items-center space-y-40 py-12 xl:flex-row xl:justify-between xl:items-start xl:space-y-0 xl:px-60">
+                <!-- logo -->
+                <img src="../assets/images/logo.png" alt="logo" class="w-40 h-22">
 
-                <!-- Main Rectangle -->
-                <div id="rectangle" onclick="selectItem(this)"
-                    class=" rectangle w-[414px] h-[38px] bg-white flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa"
-                    style="z-index: 1;">
-                    Tai khoan va bao mat
+                <!-- footer item -->
+                <div class="text-center xl:text-start">
+                    <h2 class="text-2xl font-normal font-paytone mb-5">Giới thiệu</h2>
+                    <ul class="text-2xl font-bold font-comfortaa leading-10">
+                        <li>Về Yo!</li>
+                        <li>Sản phẩm</li>
+                        <li>Câu chuyện</li>
+                        <li>Các nhân vật</li>
+                        <li>Công thức</li>
+                    </ul>
+                </div>
+
+                <!-- footer item -->
+                <div class="text-center xl:text-start">
+                    <h2 class="text-2xl font-normal font-paytone mb-5">Sản phẩm</h2>
+                    <ul class="text-2xl font-bold font-comfortaa leading-10">
+                        <li>Soda Yo!</li>
+                        <li>Kẹo Nổ Yo!</li>
+                        <li>Nho Nhộn Nhịp</li>
+                        <li>Cam Hớn Hở</li>
+                        <li>Ổi Thư Thái</li>
+                    </ul>
+                </div>
+
+                <!-- footer item -->
+                <div class="text-center xl:text-start">
+                    <h2 class="text-2xl font-normal font-paytone mb-5">Điều khoản</h2>
+                    <div class="text-2xl font-bold font-comfortaa leading-10">
+                        <ul>
+                            <li><a href="#">Điều khoản</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Đối tác</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                        <p>Ch 35 sách vận chuy 35 54.5</p>
+                        <p>Chính sách bảo mật</p>
+                    </div>
+                </div>
+
+                <!-- social -->
+                <div class="flex justify-center items-center space-x-4">
+                    <img src="../assets/img/facebook.svg" alt="facebook">
+                    <img src="../assets/img/instagram.svg" alt="instagram">
                 </div>
             </div>
-        </div>
-
-        <div class="pb-3">
-            <div class="relative">
-                <!-- Shadow Rectangle -->
-                <div class="absolute w-[414px] h-[38px] bg-black left-[4px] top-[3px] rounded-standard"
-                    style="z-index: -1;"></div>
-
-                <!-- Main Rectangle -->
-                <div id="rectangle" onclick="selectItem(this)"
-                    class="rectangle w-[414px] h-[38px] bg-white flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa"
-                    style="z-index: 1;">
-                    Trang theo doi don hang
-                </div>
-            </div>
-        </div>
+        </footer>
     </div>
 </body>
 

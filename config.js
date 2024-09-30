@@ -81,13 +81,6 @@ function toggleBankList() {
       `;
     }
   }
-
-
-
-
-
-
-
     tailwind.config = {
     theme: {
         container: {
@@ -99,6 +92,7 @@ function toggleBankList() {
             md: '744px',
             lg: '1133px',
             xl: '1920px',
+          
         },
         extend: {
             fontFamily: {
